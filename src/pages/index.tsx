@@ -1,7 +1,8 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 
-import AppPageLayout from "../components/AppPageLayout";
+import AppPageLayout from "../components/layout/AppPageLayout";
+import AppSeo from "../components/AppSeo";
 
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -14,4 +15,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <AppSeo title="Home Page" />
