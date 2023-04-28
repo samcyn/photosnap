@@ -51,7 +51,7 @@ const AppFooter = () => {
               </li>
             </ul>
 
-            <ul className="flex flex-col gap-5 mb-[108px] md:flex-row md:gap-6 md:order-2 md:mb-[72px] xl:order-3 xl:row-span-3 xl:flex-col xl:items-start xl:mb-0 xl:gap-[19px] xl:pl-[109px]">
+            <ul className="flex flex-col gap-5 mb-27 md:flex-row md:gap-6 md:order-2 md:mb-18 xl:order-3 xl:row-span-3 xl:flex-col xl:items-start xl:mb-0 xl:gap-19px xl:pl-27">
               <li className="flex justify-center text-center">
                 <AppLink
                   to="/"
@@ -85,7 +85,7 @@ const AppFooter = () => {
 
 
 
-          <div className="flex flex-col gap-5 md:gap-[108px] xl:gap-[72px]">
+          <div className="flex flex-col gap-5 md:gap-27 xl:gap-18">
             <div className="text-center md:-mt-3 md:text-right">
               <AppButton
                 className="uppercase text-white pr-0"
