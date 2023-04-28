@@ -14,9 +14,9 @@ const AppNavigationBar = () => {
 
   return (
     <header className="relative bg-white z-10">
-      <div className="container mx-auto">
+      <div className="container">
         <nav
-          className="header__nav flex flex-wrap md:flex-nowrap items-center lg:items-center px-6 py-7 md:px-10 md:py-4"
+          className="header__nav flex flex-wrap md:flex-nowrap items-center lg:items-center px-2 py-7 md:px-6 md:py-4 xl:px-0"
           aria-label="Main navigation"
         >
           {/* logo/brand starts */}

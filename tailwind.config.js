@@ -5,6 +5,22 @@ module.exports = {
     "./src/components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    screens: {
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1440px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       colors: {
         grey: '#dfdfdf',
@@ -13,6 +29,14 @@ module.exports = {
       letterSpacing: {
         '2px': '2px',
       },
+      spacing: {
+        '5px': '5px',
+        '10px': '10px',
+        '50px': '50px',
+        '25': '100px',
+        '30': '120px',
+        '50': '200px',
+      }
     },
   },
   plugins: [],
