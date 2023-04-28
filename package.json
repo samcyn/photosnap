@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "listport": "lsof -i tcp:8000",
+    "listport": "sudo lsof -i :8000",
     "killport": "kill -9"
   },
   "dependencies": {
