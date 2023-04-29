@@ -4,15 +4,25 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import AppPageLayout from "../../components/layout/AppPageLayout";
 import AppSeo from "../../components/AppSeo";
+import AppCardWithPhotoAndText from '../../components/shared/cards/AppCardWithPhotoAndText';
 
-const BlogPost = ({ data, children }) => {
+const BlogPost = ({ data, children }: any) => {
   const image = getImage(data.mdx.frontmatter.hero_image);
   return (
     <AppPageLayout pageTitle={data.mdx.frontmatter.title}>
       <p>{data.mdx.frontmatter.date}</p>
-      <GatsbyImage
+      {/* <GatsbyImage
         image={image}
         alt={data.mdx.frontmatter.hero_image_alt}
+      /> */}
+      <AppCardWithPhotoAndText
+        className="w-full"
+        storyTitle="Tunde Badmus"
+        storyAuthor="by John Appleseed"
+        src={data.mdx.frontmatter.hero_image}
+        alt={data.mdx.frontmatter.hero_image_alt}
+        publishedDate="2002-12-2"
+        
       />
       <p>
         Photo Credit:{" "}
@@ -44,6 +54,6 @@ export const query = graphql`
   }
 `;
 
-export const Head = ({ data }) => <AppSeo title={data.mdx.frontmatter.title} />
+export const Head = ({ data }: any) => <AppSeo title={data.mdx.frontmatter.title} />
 
 export default BlogPost;

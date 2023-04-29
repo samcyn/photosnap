@@ -17,6 +17,11 @@ interface Props {
   showIndicator?: boolean
   className?: string
   bodyClassName?: string
+  tagline?: string
+  publishedDate?: string
+  author?: string
+  titleClassName?: string
+  descriptionClassName?: string
   onCallToAction?: React.MouseEventHandler<Element>
 }
 
@@ -27,25 +32,32 @@ const AppCardWithMain = ({
   showIndicator,
   className,
   bodyClassName,
+  tagline,
+  publishedDate,
+  author,
+  titleClassName,
+  descriptionClassName,
   onCallToAction
 }: Props) => {
   return (
-    <div className={`flex justify-center items-center ${className}`}>
-      <div className={`relative flex flex-col w-full ${bodyClassName}`}>
+    <div className={`flex ${className}`}>
+      <div className={`relative flex flex-col w-full ${bodyClassName || ''}`}>
         {/* indicator */}
         {showIndicator ? <Indicator /> : null}
 
-        <h3 
-          className="
-            text-inherit font-bold text-[32px] 
-            leading-10 tracking-[3.33333px] mb-4 
-            md:text-[40px] md:leading-[48px] 
-            uppercase md:tracking-[4.16667px] 
-            md:mb-[21px]"
-          >
+        {tagline && <p className="text-inherit font-bold text-xs tracking-2px mb-4 md:mb-6">{tagline}</p> }
+        <h3 className={`text-inherit font-bold ${titleClassName || ''}`}>
           {title}
         </h3>
-        <p className="text-inherit font-normal text-[15px] leading-[25px] mb-[11px] mix-blend-normal opacity-60 md:mb-9">
+        
+        {/* if published date or author */}
+        {(publishedDate || author) && (<p className="text-inherit text-[13px] leading-[17px] font-normal mb-6 inline-flex gap-2">
+            <span className="mix-blend-normal opacity-75">{publishedDate}</span>
+            <span>{author}</span>
+          </p>)
+        }
+
+        <p className={`text-inherit font-normal ${descriptionClassName || ''}`}>
           {description}
         </p>
         <AppButton
@@ -68,8 +80,10 @@ AppCardWithMain.defaultProps = {
   description: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
   callToActionText: 'Get An Invite',
   showIndicator: false,
-  className: 'bg-black text-white py-0 md:py-[173px] xl:py-[172px]',
+  className: 'justify-center items-center bg-black text-white py-0 md:py-[173px] xl:py-[172px]',
   bodyClassName: 'px-6 py-18 md:px-[54px] md:py-0 xl:pl-[112px] xl:pr-[111px]',
+  titleClassName: "text-[32px] leading-10 tracking-[3.33333px] mb-4 md:text-[40px] md:leading-[48px] uppercase md:tracking-[4.16667px] md:mb-[21px]",
+  descriptionClassName: "text-[15px] leading-[25px] mb-3 mix-blend-normal opacity-60 md:mb-9"
 }
 
 export default AppCardWithMain;
