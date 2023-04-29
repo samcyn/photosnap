@@ -7,8 +7,8 @@ import AppSeo from "../components/AppSeo";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <AppPageLayout pageTitle="Index Page">
-      <div>Index page</div>
+    <AppPageLayout>
+      <section></section>
     </AppPageLayout>
   )
 }

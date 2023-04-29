@@ -87,4 +87,8 @@ const AppCardWithPhotoAndText = ({
   );
 }
 
+AppCardWithPhotoAndText.defaultProps = {
+  mode: 'default'
+};
+
 export default AppCardWithPhotoAndText;

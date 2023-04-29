@@ -1,7 +1,6 @@
 import React from "react";
 import AppButton from "../AppButton";
 import AppIcon from "../AppIcon";
-import { ReactNode } from "@mdx-js/react/lib";
 
 const indicatorStyles = {
   // note -- tailwind has no angle property
