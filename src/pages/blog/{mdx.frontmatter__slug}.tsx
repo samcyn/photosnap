@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import AppPageLayout from "../../components/layout/AppPageLayout";
 import AppSeo from "../../components/AppSeo";
-import AppCardWithPhotoAndText from '../../components/shared/cards/AppCardWithPhotoAndText';
+import AppCardWithIcon from '../../components/shared/cards/AppCardWithIcon';
 
 const BlogPost = ({ data, children }: any) => {
   const image = getImage(data.mdx.frontmatter.hero_image);
@@ -15,21 +15,16 @@ const BlogPost = ({ data, children }: any) => {
         image={image}
         alt={data.mdx.frontmatter.hero_image_alt}
       /> */}
-      <AppCardWithPhotoAndText
-        className="w-full"
-        storyTitle="Tunde Badmus"
-        storyAuthor="by John Appleseed"
-        src={data.mdx.frontmatter.hero_image}
-        alt={data.mdx.frontmatter.hero_image_alt}
-        publishedDate="2002-12-2"
-        
+      <AppCardWithIcon 
+        title="100% Responsive"
+        description="No matter which the device you’re on, our site is fully responsive and stories look beautiful on any screen."
+        iconProps={{
+          icon: 'drag_n_drop',
+          width: '81', 
+          height: '72'
+          // width="81" height="72"
+        }}
       />
-      <p>
-        Photo Credit:{" "}
-        <a href={data.mdx.frontmatter.hero_image_credit_link}>
-          {data.mdx.frontmatter.hero_image_credit_text}
-        </a>
-      </p>
       {children}
     </AppPageLayout>
   )

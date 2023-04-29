@@ -2,7 +2,7 @@ import React, { createElement, SVGAttributes, CSSProperties } from 'react';
 
 import IconsLibrary, { IconTypes } from '../../lib/iconLibrary';
 
-interface IconBaseProps extends SVGAttributes<string> {
+export interface IconBaseProps extends SVGAttributes<string> {
   size?: number;
   color?: string;
   className?: string;
