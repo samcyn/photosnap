@@ -41,14 +41,14 @@ const AppNavigationBar = () => {
             <ul className="flex flex-wrap md:flex-grow md:justify-center p-0 m-0 list-none flex-row gap-5 md:gap-9 mb-5 md:mb-0">
               <li className="flex justify-center text-center basis-full md:basis-auto">
                 <AppLink
-                  to="/"
+                  to="/stories"
                   className="flex text-black text-xs font-bold uppercase tracking-2px m-0 hover:text-black/30 py-1.5px"
                   activeClassName="!text-orange"
                 >Stories</AppLink>
               </li>
               <li className="flex justify-center text-center basis-full md:basis-auto">
                 <AppLink
-                  to="/headphones"
+                  to="/features"
                   className="flex text-black text-xs font-bold uppercase tracking-2px m-0 hover:text-black/30 py-1.5px"
 
                   activeClassName="!text-orange"
@@ -56,7 +56,7 @@ const AppNavigationBar = () => {
               </li>
               <li className="flex justify-center text-center basis-full md:basis-auto">
                 <AppLink
-                  to="/speakers"
+                  to="/pricing"
                   className="flex text-black text-xs font-bold uppercase tracking-2px m-0 hover:text-black/30 py-1.5px"
                   activeClassName="!text-orange"
                 >Pricing</AppLink>

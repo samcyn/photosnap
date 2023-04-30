@@ -4,7 +4,7 @@ import AppPageLayout from "../components/layout/AppPageLayout"
 
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
-    <AppPageLayout pageTitle="Not Found">
+    <AppPageLayout>
       <div>Not Found</div>
     </AppPageLayout>
   )
