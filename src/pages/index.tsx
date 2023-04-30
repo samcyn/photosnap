@@ -6,7 +6,8 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 
 import AppPageLayout from "../components/layout/AppPageLayout";
 import AppSeo from "../components/AppSeo";
-import { AppCardWithPhoto, AppCardWithMain, AppCardWithPhotoAndText } from "../components/shared/cards";
+import { AppCardWithPhoto, AppCardWithMain, AppCardWithPhotoAndText, AppCardWithIcon } from "../components/shared/cards";
+import { IconTypes } from "../lib/iconLibrary";
 
 type ImageSharpProp = {
   childImageSharp: {
@@ -38,6 +39,16 @@ type Props = {
       designed_for_everyone: P
       create_and_share: P
       stories: Story[]
+      features: {
+        slug: string
+        title: string
+        description: string
+        icon: {
+          icon: IconTypes
+          width: string
+          height: string
+        }
+      }[]
     }
   }
 }
@@ -49,15 +60,17 @@ const IndexPage: React.FC<PageProps<Props>> = ({
     create_and_share,
     beautiful_stories,
     designed_for_everyone,
-    stories
+    stories,
+    features
   } = data.mdx.frontmatter;
+  // 64.45
   return (
     <AppPageLayout>
-      <section>
+      <section className="flex flex-wrap flex-col md:flex-row">
         <AppCardWithPhoto
           src={create_and_share.desktop_image}
-          alt="desktop image"
-          className="h-[294px]"
+          alt={create_and_share.title}
+          className="w-full md:w-1/3 md:basis-1/3 xl:w-7/12 xl:basis-7/12 h-[294px] md:h-auto md:order-2"
         />
 
         <AppCardWithMain
@@ -65,46 +78,65 @@ const IndexPage: React.FC<PageProps<Props>> = ({
           description='Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.'
           callToActionText='Get An Invite'
           showIndicator
+          className="w-full md:w-2/3 md:basis-2/3 xl:w-5/12 xl:basis-5/12 justify-center items-center bg-black text-white py-0 md:py-[173px] xl:py-[172px] md:order-1"
         />
-
+      </section>
+      <section className="flex flex-wrap flex-col md:flex-row">
         <AppCardWithPhoto
           src={beautiful_stories.desktop_image}
-          alt="he"
-          className="h-[271px]"
+          alt={beautiful_stories.title}
+          className="w-full md:w-1/3 md:basis-1/3 xl:w-7/12 xl:basis-7/12 h-[271px] md:h-auto"
         />
 
         <AppCardWithMain
           title="BEAUTIFUL STORIES EVERY TIME"
           description="We provide design templates to ensure your stories look terrific. Easily add photos, text, embed maps and media from other networks. Then share your story with everyone."
-          className="justify-center items-center bg-white text-black py-0 md:py-[173px] xl:py-[172px]"
+          className="w-full md:w-2/3 md:basis-2/3 xl:w-5/12 xl:basis-5/12 justify-center items-center bg-white text-black py-0 md:py-[136px] xl:py-[172px]"
           callToActionText='View the stories'
         />
+      </section>
 
+      <section className="flex flex-wrap flex-col md:flex-row">
         <AppCardWithPhoto
           src={designed_for_everyone.desktop_image}
-          alt="he"
-          className="h-[271px]"
+          alt={designed_for_everyone.title}
+          className="w-full md:w-1/3 md:basis-1/3 xl:w-7/12 xl:basis-7/12 h-[271px] md:h-auto md:order-2"
         />
         <AppCardWithMain
           title="DESIGNED FOR EVERYONE"
           description="Photosnap can help you create stories that resonate with your audience.  Our tool is designed for photographers of all levels, brands, businesses you name it."
-          className="justify-center items-center bg-white text-black py-0 md:py-[173px] xl:py-[172px]"
+          className="w-full md:w-2/3 md:basis-2/3 xl:w-5/12 xl:basis-5/12 justify-center items-center bg-white text-black py-0 md:py-[160px] xl:py-[172px] md:order-1"
           callToActionText='View the stories'
         />
-
-        {/* stories */}
+      </section>
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {
           stories.map(story => (
             <AppCardWithPhotoAndText
+              key={story.slug}
               storyTitle={story.title}
               storyAuthor={story.author}
               src={story.desktop_image}
               callToActionText="Read Story"
               alt="story"
-              className="h-[375px]"
+              className="h-[375px] md:h-[500px]"
             />
           ))
         }
+      </section>
+      <section className="px-4 py-20 md:px-[140px] md:py-30 lg:px-0">
+        <div className="flex flex-col gap-14 md:gap-20 lg:flex-row lg:gap-[30px] container">
+          {
+            features.map(feature => (
+              <AppCardWithIcon
+                key={feature.slug}
+                title={feature.title}
+                description={feature.description}
+                iconProps={feature.icon}
+              />
+            ))
+          }
+        </div>
       </section>
     </AppPageLayout>
   )
@@ -197,6 +229,16 @@ query MyQuery {
           childImageSharp {
             gatsbyImageData
           }
+        }
+      }
+      features {
+        slug
+        title
+        description
+        icon {
+          icon
+          width
+          height
         }
       }
     }

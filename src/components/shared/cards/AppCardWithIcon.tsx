@@ -16,12 +16,12 @@ const AppCardWithIcon = ({
   iconProps
 }: Props) => (
   <div className={className}>
-    <div className="flex justify-center items-center mb-12 text-black">
+    <div className="flex justify-center items-center h-18 mb-12 text-inherit">
       <AppIcon {...iconProps} />
     </div>
     <div>
-      <p className="font-bold text-center text-black text-[18px] leading-[25px] mb-4">{title}</p>
-      <p className="font-normal text-center text-black text-[15px] leading-[25px] mix-blend-normal opacity-60">
+      <p className="font-bold text-center text-inherit text-[18px] leading-[25px] mb-4">{title}</p>
+      <p className="font-normal text-center text-inherit text-[15px] leading-[25px] mix-blend-normal opacity-60">
         {description}
       </p>
     </div>
@@ -29,7 +29,7 @@ const AppCardWithIcon = ({
 )
 
 AppCardWithIcon.defaultProps = {
-  className: "px-6 py-7"
+  className: "text-black"
 }
 
 export default AppCardWithIcon;
