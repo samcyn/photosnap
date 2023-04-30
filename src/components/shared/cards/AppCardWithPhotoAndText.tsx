@@ -41,7 +41,7 @@ const AppCardWithPhotoAndText = ({
   const image = getImage(src) as IGatsbyImageData;
 
   const computedClass = mode === 'default' ? 'px-6 md:px-10 py-10 flex flex-col justify-end' : '';
-  const imageClass = mode === 'default' ? 'absolute inset-0 h-full w-full border border-red-100' : 'relative md:absolute md:inset-0 md:h-full md:w-full';
+  const imageClass = mode === 'default' ? 'absolute inset-0 !h-full !w-full border border-red-950' : 'relative md:absolute md:inset-0 md:h-full md:w-full';
 
   return (
     <figure className={`relative overflow-hidden ${computedClass} ${className || ''}`}>
@@ -54,7 +54,7 @@ const AppCardWithPhotoAndText = ({
       {
         mode === 'default' ? (
           <>
-            <div className="absolute inset-0 h-full w-full z-0 border border-red-100" style={overlayStyles}></div>
+            <div className="absolute inset-0 !h-full !w-full z-0 border border-red-950" style={overlayStyles}></div>
             <div className="relative z-10">
               {publishedDate && <time className="text-white text-[13px] leading-[17px] font-normal mb-1">{publishedDate}</time>}
               <p className="text-[18px] leading-[25px] font-bold text-white mb-1">{storyTitle}</p>
