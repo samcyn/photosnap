@@ -8,6 +8,9 @@ import AppCardWithMain from "./AppCardWithMain";
 const overlayStyles = {
   background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0.27%, rgba(0, 0, 0, 0.661222) 100%)'
 }
+const indicatorStyles = {
+  background: 'linear-gradient(26.57deg, #FFC593 0%, #BC7198 43.29%, #5A77FF 83.33%)'
+};
 
 type Props = {
   src: ImageDataLike
@@ -40,7 +43,7 @@ const AppCardWithPhotoAndText = ({
 }: Props) => {
   const image = getImage(src) as IGatsbyImageData;
 
-  const computedClass = mode === 'default' ? 'px-6 md:px-10 py-10 flex flex-col justify-end' : '';
+  const computedClass = mode === 'default' ? 'px-6 md:px-10 py-10 flex flex-col group lg:transition-transform lg:ease-in lg:delay-100 justify-end lg:hover:-translate-y-6' : '';
   const imageClass = mode === 'default' ? '!absolute inset-0 h-full w-full' : 'relative md:absolute md:inset-0 md:h-full md:w-full';
 
   return (
@@ -73,6 +76,7 @@ const AppCardWithPhotoAndText = ({
                 </AppButton>
               </div>
             </div>
+            <div className="hidden lg:block absolute transition-all h-6px w-0 left-0 right-0 bottom-0 ease-in lg:group-hover:w-full" style={indicatorStyles}></div>
           </>
         ) : (
           <AppCardWithMain
