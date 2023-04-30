@@ -211,7 +211,7 @@ query MyQuery {
       }
       stories {
         slug
-        published
+        status
         title
         author
         slug
