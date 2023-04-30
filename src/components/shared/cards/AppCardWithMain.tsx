@@ -50,7 +50,7 @@ const AppCardWithMain = ({
         </h3>
         
         {/* if published date or author */}
-        {(publishedDate || author) && (<p className="text-inherit text-[13px] leading-[17px] font-normal mb-6 inline-flex gap-2">
+        {(publishedDate || author) && (<p className="text-inherit text-13px leading-17px font-normal mb-6 inline-flex gap-2">
             <span className="mix-blend-normal opacity-75">{publishedDate}</span>
             <span>{author}</span>
           </p>)
@@ -79,10 +79,10 @@ AppCardWithMain.defaultProps = {
   description: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
   callToActionText: 'Get An Invite',
   showIndicator: false,
-  className: 'justify-center items-center bg-black text-white py-0 md:py-[173px] xl:py-[172px]',
-  bodyClassName: 'px-6 py-18 md:px-[54px] md:py-0 xl:pl-[112px] xl:pr-[111px]',
-  titleClassName: "text-[32px] leading-10 tracking-[3.33333px] mb-4 md:text-[40px] md:leading-[48px] uppercase md:tracking-[4.16667px] md:mb-[21px]",
-  descriptionClassName: "text-[15px] leading-[25px] mb-3 mix-blend-normal opacity-60 md:mb-9"
+  className: 'justify-center items-center bg-black text-white py-0 md:py-43 xl:py-43',
+  bodyClassName: 'px-6 py-18 md:px-54px md:py-0 xl:pl-28 xl:pr-28',
+  titleClassName: "text-32px leading-10 tracking-thirds mb-4 md:text-40px md:leading-12 uppercase md:tracking-fourths md:mb-5",
+  descriptionClassName: "text-15px leading-25px mb-3 mix-blend-normal opacity-60 md:mb-9"
 }
 
 export default AppCardWithMain;

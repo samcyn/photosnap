@@ -12,17 +12,19 @@ const AppFooter = () => {
         <div className="py-14 px-4 flex flex-col md:flex-row md:justify-between md:py-16 md:px-6 xl:px-0">
           <div className="flex flex-col xl:grid xl:grid-rows-3 xl:grid-flow-col xl:gap-0">
             <div className="
-          text-center leading-[10px] mb-8 
-          md:text-left xl:row-span-2 xl:mb-0"
+              text-center leading-10px mb-8 
+              md:text-left xl:row-span-2 xl:mb-0
+            "
             >
               <AppBrandLogo className="text-white" />
             </div>
 
             <ul className="
-          flex justify-center 
-          items-center gap-3 mb-12 
-          md:justify-start md:order-3 md:mb-0
-          xl:order-2 xl:items-end"
+              flex justify-center 
+              items-center gap-3 mb-12 
+              md:justify-start md:order-3 md:mb-0
+              xl:order-2 xl:items-end
+            "
             >
               <li>
                 <a href="/" className="flex justify-center items-center text-white">
@@ -97,7 +99,7 @@ const AppFooter = () => {
                 Get An Invite
               </AppButton>
             </div>
-            <p className="text-white/50 text-center font-normal text-[15px] leading-5 mix-blend-normal">Copyright 2019. All Rights Reserved</p>
+            <p className="text-white/50 text-center font-normal text-15px leading-5 mix-blend-normal">Copyright 2019. All Rights Reserved</p>
           </div>
         </div>
       </div>

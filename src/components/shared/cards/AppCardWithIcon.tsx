@@ -20,8 +20,8 @@ const AppCardWithIcon = ({
       <AppIcon {...iconProps} />
     </div>
     <div>
-      <p className="font-bold text-center text-inherit text-[18px] leading-[25px] mb-4">{title}</p>
-      <p className="font-normal text-center text-inherit text-[15px] leading-[25px] mix-blend-normal opacity-60">
+      <p className="font-bold text-center text-inherit text-18px leading-25px mb-4">{title}</p>
+      <p className="font-normal text-center text-inherit text-15px leading-25px mix-blend-normal opacity-60">
         {description}
       </p>
     </div>

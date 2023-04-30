@@ -56,10 +56,10 @@ const AppCardWithPhotoAndText = ({
           <>
             <div className="!absolute inset-0 h-full w-full z-0" style={overlayStyles}></div>
             <div className="relative z-10">
-              {publishedDate && <time className="text-white text-[13px] leading-[17px] font-normal mb-1">{publishedDate}</time>}
-              <p className="text-[18px] leading-[25px] font-bold text-white mb-1">{storyTitle}</p>
-              <p className="font-normal text-white text-[13px] leading-[17px] mb-4">{storyAuthor}</p>
-              <div className="w-full h-[1px] bg-white/25 mix-blend-normal" />
+              {publishedDate && <time className="text-white text-13px leading-17px font-normal mb-1">{publishedDate}</time>}
+              <p className="text-18px leading-25px font-bold text-white mb-1">{storyTitle}</p>
+              <p className="font-normal text-white text-13px leading-17px mb-4">{storyAuthor}</p>
+              <div className="w-full h-1px bg-white/25 mix-blend-normal" />
               <div className="mt-2">
                 <AppButton
                   className="uppercase text-white w-full justify-between pl-0 pr-0 pb-0"
@@ -82,10 +82,10 @@ const AppCardWithPhotoAndText = ({
             tagline={storyTagline}
             publishedDate={publishedDate}
             author={storyAuthor}
-            titleClassName="text-[32px] leading-10 tracking-[3.33333px] mb-4 md:text-[40px] md:leading-[48px] uppercase md:tracking-[4.16667px] md:mb-4"
-            descriptionClassName="text-[15px] leading-[25px] mb-3 mix-blend-normal opacity-60 md:mb-3"
-            className='bg-black text-white py-0 md:py-[122px] md:relative md:z-10 md:bg-transparent xl:py-[122px]'
-            bodyClassName='px-7 py-12 md:px-10 md:py-0 md:max-w-[467px] xl:pl-[112px] xl:pr-[112px] lg:max-w-[611px]'
+            titleClassName="text-32px leading-10 tracking-thirds mb-4 md:text-40px md:leading-12 uppercase md:tracking-fourths md:mb-4"
+            descriptionClassName="text-15px leading-25px mb-3 mix-blend-normal opacity-60 md:mb-3"
+            className='bg-black text-white py-0 md:py-30 md:relative md:z-10 md:bg-transparent xl:py-30'
+            bodyClassName='px-7 py-12 md:px-10 md:py-0 md:max-w-[467px] xl:pl-28 xl:pr-28 lg:max-w-[611px]'
           />
         )
       }
