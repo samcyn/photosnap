@@ -4,25 +4,26 @@ import type { HeadFC, PageProps } from "gatsby";
 
 import AppPageLayout from "../../components/layout/AppPageLayout";
 import AppSeo from "../../components/AppSeo";
+// import { AppCardWithPhoto } from '../../components/shared/cards';
 
 type Props =  {
-  allMdx: {
-    nodes: {
-      id: string
-      frontmatter: {
-        slug: string
-        title: string
-        date: string
-      }
-      excerpt: string
-    }[];
-  }
+  // allMdx: {
+  //   nodes: {
+  //     id: string
+  //     frontmatter: {
+  //       slug: string
+  //       title: string
+  //       date: string
+  //     }
+  //     excerpt: string
+  //   }[];
+  // }
 }
 
 const BlogPage: React.FC<PageProps<Props>>  = ({ data }) => {
   return (
-    <AppPageLayout pageTitle="My Blog Posts">
-      {
+    <AppPageLayout>
+      {/* {
         data.allMdx.nodes.map((node) => (
           <article key={node.id}>
             <Link to={`/blog/${node.frontmatter.slug}`}>
@@ -32,26 +33,26 @@ const BlogPage: React.FC<PageProps<Props>>  = ({ data }) => {
             <p>{node.excerpt}</p>
           </article>
         ))
-      }
+      } */}
     </AppPageLayout>
   )
 }
 
-export const query = graphql`
-  query {
-    allMdx(sort: { frontmatter: { date: DESC }}) {
-      nodes {
-        frontmatter {
-          date(formatString: "MMMM D, YYYY")
-          title
-          slug
-        }
-        id
-        excerpt
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query {
+//     allMdx(sort: { frontmatter: { date: DESC }}) {
+//       nodes {
+//         frontmatter {
+//           date(formatString: "MMMM D, YYYY")
+//           title
+//           slug
+//         }
+//         id
+//         excerpt
+//       }
+//     }
+//   }
+// `;
 
 export const Head: HeadFC = () => <AppSeo title="My Blog Posts" />
 

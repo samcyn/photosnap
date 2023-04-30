@@ -4,6 +4,11 @@ import AppButton from "../AppButton";
 import AppIcon from "../AppIcon";
 import AppCardWithMain from "./AppCardWithMain";
 
+// note: using this cause tailwind have no angle value for gradient
+const overlayStyles = {
+  background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0.27%, rgba(0, 0, 0, 0.661222) 100%)'
+}
+
 type Props = {
   src: ImageDataLike
   alt: string
@@ -48,25 +53,27 @@ const AppCardWithPhotoAndText = ({
 
       {
         mode === 'default' ? (
-          <div className="relative z-10">
-            {publishedDate && <time className="text-white text-[13px] leading-[17px] font-normal mb-1">{publishedDate}</time>}
-            <p className="text-[18px] leading-[25px] font-bold text-white mb-1">{storyTitle}</p>
-            <p className="font-normal text-white text-[13px] leading-[17px] mb-4">{storyAuthor}</p>
-            <div className="w-full h-[1px] bg-white/25 mix-blend-normal" />
-            <div className="mt-2">
-              <AppButton
-                className="uppercase text-white w-full justify-between pl-0 pr-0 pb-0"
-                variant="text"
-                endIcon={
-                  <AppIcon width="43" height="14" icon="arrow-forward-right" />
-                }
-                onClick={onCallToAction}
-              >
-                {callToActionText}
-              </AppButton>
+          <>
+            <div className="absolute inset-0 h-full w-full z-0" style={overlayStyles}></div>
+            <div className="relative z-10">
+              {publishedDate && <time className="text-white text-[13px] leading-[17px] font-normal mb-1">{publishedDate}</time>}
+              <p className="text-[18px] leading-[25px] font-bold text-white mb-1">{storyTitle}</p>
+              <p className="font-normal text-white text-[13px] leading-[17px] mb-4">{storyAuthor}</p>
+              <div className="w-full h-[1px] bg-white/25 mix-blend-normal" />
+              <div className="mt-2">
+                <AppButton
+                  className="uppercase text-white w-full justify-between pl-0 pr-0 pb-0"
+                  variant="text"
+                  endIcon={
+                    <AppIcon width="43" height="14" icon="arrow-forward-right" />
+                  }
+                  onClick={onCallToAction}
+                >
+                  {callToActionText}
+                </AppButton>
+              </div>
             </div>
-
-          </div>
+          </>
         ) : (
           <AppCardWithMain
             title={storyTitle}
