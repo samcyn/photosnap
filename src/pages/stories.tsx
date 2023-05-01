@@ -1,13 +1,12 @@
 import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
+import { HeadFC, PageProps, navigate } from "gatsby";
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
 
 import AppPageLayout from "../components/layout/AppPageLayout";
 import AppSeo from "../components/AppSeo";
-import { AppCardWithPhoto, AppCardWithMain, AppCardWithPhotoAndText, AppCardWithIcon } from "../components/shared/cards";
-import { IconTypes } from "../lib/iconLibrary";
+import { AppCardWithPhotoAndText } from "../components/shared/cards";
 
 type ImageSharpProp = {
   childImageSharp: {
@@ -36,9 +35,16 @@ type Props = {
 }
 
 const StoriesPage: React.FC<PageProps<Props>> = ({
-  data
+  data,
+  location
 }) => {
   const nodes = data.allMdx.nodes;
+
+  // note function must return React.MouseEventHandler<Element> | undefined
+  const onCallToAction = (slug: string): React.MouseEventHandler<Element> | undefined => (e) => {
+    navigate(`${location.pathname}${slug}/`)
+  };
+
   return (
     <AppPageLayout>
       <section className="grid md:grid-cols-2 lg:grid-cols-4">
@@ -55,6 +61,7 @@ const StoriesPage: React.FC<PageProps<Props>> = ({
                   src={node.frontmatter.desktop_image}
                   publishedDate={node.frontmatter.publishedDate}
                   callToActionText="Read Story"
+                  onCallToAction={onCallToAction(node.frontmatter.slug)}
                   alt={node.frontmatter.title}
                   mode="hero"
                   className="md:col-span-2 lg:col-span-4"
@@ -69,6 +76,7 @@ const StoriesPage: React.FC<PageProps<Props>> = ({
                 src={node.frontmatter.desktop_image}
                 publishedDate={node.frontmatter.publishedDate}
                 callToActionText="Read Story"
+                onCallToAction={onCallToAction(node.frontmatter.slug)}
                 alt={node.frontmatter.title}
                 className="h-375px md:h-125"
               />
@@ -94,7 +102,7 @@ export const query = graphql`
           title
           is_featured
           status
-          publishedDate
+          publishedDate(formatString: "MMMM Do, YYYY")
           description
           author
           desktop_image {

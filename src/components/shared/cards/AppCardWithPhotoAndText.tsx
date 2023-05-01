@@ -87,9 +87,10 @@ const AppCardWithPhotoAndText = ({
             publishedDate={publishedDate}
             author={storyAuthor}
             titleClassName="text-32px leading-10 tracking-thirds mb-4 md:text-40px md:leading-12 uppercase md:tracking-fourths md:mb-4"
-            descriptionClassName="text-15px leading-25px mb-3 mix-blend-normal opacity-60 md:mb-3"
+            descriptionClassName={`text-15px leading-25px mix-blend-normal opacity-60 ${callToActionText ? 'mb-3 md:mb-3' : ''}`}
             className='bg-black text-white py-0 md:py-30 md:relative md:z-10 md:bg-transparent xl:py-30'
             bodyClassName='px-7 py-12 md:px-10 md:py-0 md:max-w-[467px] xl:pl-28 xl:pr-28 lg:max-w-[611px]'
+            onCallToAction={onCallToAction}
           />
         )
       }

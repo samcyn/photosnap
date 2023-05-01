@@ -44,31 +44,35 @@ const AppCardWithMain = ({
         {/* indicator */}
         {showIndicator ? <Indicator /> : null}
 
-        {tagline && <p className="text-inherit font-bold text-xs tracking-2px mb-4 md:mb-6">{tagline}</p> }
+        {tagline && <p className="text-inherit font-bold text-xs tracking-2px mb-4 md:mb-6">{tagline}</p>}
         <h3 className={`text-inherit font-bold ${titleClassName || ''}`}>
           {title}
         </h3>
-        
+
         {/* if published date or author */}
         {(publishedDate || author) && (<p className="text-inherit text-13px leading-17px font-normal mb-6 inline-flex gap-2">
-            <span className="mix-blend-normal opacity-75">{publishedDate}</span>
-            <span>{author}</span>
-          </p>)
+          <span className="mix-blend-normal opacity-75">{publishedDate}</span>
+          <span>{author}</span>
+        </p>)
         }
 
         <p className={`text-inherit font-normal ${descriptionClassName || ''}`}>
           {description}
         </p>
-        <AppButton
-          className="uppercase text-inherit pl-0 pb-0"
-          variant="text"
-          endIcon={
-            <AppIcon width="43" height="14" icon="arrow-forward-right" />
-          }
-          onClick={onCallToAction}
-        >
-          {callToActionText}
-        </AppButton>
+        {
+          callToActionText && (
+            <AppButton
+              className="uppercase text-inherit pl-0 pb-0"
+              variant="text"
+              endIcon={
+                <AppIcon width="43" height="14" icon="arrow-forward-right" />
+              }
+              onClick={onCallToAction}
+            >
+              {callToActionText}
+            </AppButton>
+          )
+        }
       </div>
     </div>
   )
@@ -77,7 +81,7 @@ const AppCardWithMain = ({
 AppCardWithMain.defaultProps = {
   title: 'Create and share your photo stories.',
   description: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
-  callToActionText: 'Get An Invite',
+  // callToActionText: 'Get An Invite',
   showIndicator: false,
   className: 'justify-center items-center bg-black text-white py-0 md:py-43 xl:py-43',
   bodyClassName: 'px-6 py-18 md:px-54px md:py-0 xl:pl-28 xl:pr-28',
