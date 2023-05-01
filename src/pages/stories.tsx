@@ -93,7 +93,7 @@ export const query = graphql`
   query MyQuery {
     allMdx(
       sort: {frontmatter: {is_featured: ASC}}
-      filter: {parent: {}, frontmatter: {slug: {ne: "home_page"}}}
+      filter: {frontmatter: {type: {eq: "story"}}}
     ) {
       nodes {
         id

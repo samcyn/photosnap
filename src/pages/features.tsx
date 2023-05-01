@@ -19,15 +19,7 @@ type P = {
   title: string
   description: string
   slug: string
-  mobile_image: ImageSharpProp
-  tablet_image: ImageSharpProp
   desktop_image: ImageSharpProp
-}
-
-interface Story extends P {
-  published: string
-  author: string
-  publishedDate: string
 }
 
 type Props = {
@@ -35,10 +27,7 @@ type Props = {
     frontmatter: {
       slug: string
       title: string
-      beautiful_stories: P
-      designed_for_everyone: P
-      create_and_share: P
-      stories: Story[]
+      metadata_intro: P
       features: {
         slug: string
         title: string
@@ -49,6 +38,11 @@ type Props = {
           height: string
         }
       }[]
+      metadata_extras: {
+        slug: string
+        title: string
+        desktop_image: ImageSharpProp
+      }
     }
   }
 }
@@ -57,7 +51,8 @@ const IndexPage: React.FC<PageProps<Props>> = ({
   data
 }) => {
   const {
-    create_and_share,
+    metadata_intro,
+    metadata_extras,
     features
   } = data.mdx.frontmatter;
   // 64.45
@@ -65,31 +60,50 @@ const IndexPage: React.FC<PageProps<Props>> = ({
     <AppPageLayout>
       <section className="flex flex-wrap flex-col md:flex-row">
         <AppCardWithPhoto
-          src={create_and_share.desktop_image}
-          alt={create_and_share.title}
+          src={metadata_intro.desktop_image}
+          alt={metadata_intro.title}
           className="w-full md:w-1/3 md:basis-1/3 xl:w-7/12 xl:basis-7/12 h-294px md:h-auto md:order-2"
         />
 
         <AppCardWithMain
-          title='Create and share your photo stories.'
-          description='Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.'
+          title={metadata_intro.title}
+          description={metadata_intro.description}
           showIndicator
+          bodyClassName= "px-3 py-18 md:px-38px md:py-0 xl:px-24"
           className="w-full md:w-2/3 md:basis-2/3 xl:w-5/12 xl:basis-5/12 justify-center items-center bg-black text-white py-0 md:py-43 xl:py-43 md:order-1"
+          descriptionClassName="text-15px leading-25px mix-blend-normal opacity-60"
         />
       </section>
-      <section className="px-4 py-20 md:px-35 md:py-30 lg:px-0">
-        <div className="flex flex-col gap-14 md:gap-20 lg:flex-row lg:gap-30px container">
-          {
-            features.map(feature => (
-              <AppCardWithIcon
-                key={feature.slug}
-                title={feature.title}
-                description={feature.description}
-                iconProps={feature.icon}
-              />
-            ))
-          }
+      <section className="px-4 py-20 md:px-6 md:py-28 lg:px-0 lg:py-40">
+        <div className="container">
+          <div className="flex flex-wrap -my-7 md:-mx-6px md:-my-9 lg:-mx-15px lg:-my-13">
+            {
+              features.map(feature => (
+                <AppCardWithIcon
+                  className="text-black w-full basis-full md:w-1/2 md:basis-1/2 lg:w-1/3 lg:basis-1/3 py-7 md:px-6px md:py-9 lg:px-15px lg:py-13"
+                  key={feature.slug}
+                  title={feature.title}
+                  description={feature.description}
+                  iconProps={feature.icon}
+                />
+              ))
+            }
+          </div>
         </div>
+      </section>
+      <section>
+        <AppCardWithMain
+          title={metadata_extras.title}
+          src={metadata_extras.desktop_image}
+          showIndicator
+          className="w-full justify-center items-center bg-black text-white"
+          titleClassName="text-32px leading-10 tracking-thirds mb-3 md:text-40px md:leading-12 uppercase md:tracking-fourths md:mb-0 md:max-w-[400px]"
+          descriptionClassName="text-15px leading-25px mix-blend-normal opacity-60"
+          bodyClassName="px-4 py-16 md:px-6 md:py-17"
+          containerClassName="md:flex-row md:gap-30 justify-between"
+          actionButtonClassName="uppercase text-inherit pl-0 pb-0 md:p-0"
+          callToActionText="Get An Invite"
+        />
       </section>
     </AppPageLayout>
   )
@@ -102,20 +116,10 @@ export const query = graphql`
       frontmatter {
         slug
         title
-        create_and_share {
-          description
+        metadata_intro {
           slug
           title
-          mobile_image {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-          tablet_image {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
+          description
           desktop_image {
             childImageSharp {
               gatsbyImageData
@@ -130,6 +134,15 @@ export const query = graphql`
             icon
             width
             height
+          }
+        }
+        metadata_extras {
+          slug
+          title
+          desktop_image {
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
       }
