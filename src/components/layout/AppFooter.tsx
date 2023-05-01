@@ -57,28 +57,28 @@ const AppFooter = () => {
               <li className="flex justify-center text-center">
                 <AppLink
                   to="/"
-                  className="flex text-white text-xs font-bold uppercase tracking-2px"
+                  className="flex text-white text-xs font-bold uppercase tracking-2px hover:opacity-30"
                   activeClassName="!text-orange"
                 >Home</AppLink>
               </li>
               <li className="flex justify-center text-center">
                 <AppLink
                   to="/stories"
-                  className="flex text-white text-xs font-bold uppercase tracking-2px"
+                  className="flex text-white text-xs font-bold uppercase tracking-2px hover:opacity-30"
                   activeClassName="!text-orange"
                 >Stories</AppLink>
               </li>
               <li className="flex justify-center text-center">
                 <AppLink
                   to="/features"
-                  className="flex text-white text-xs font-bold uppercase tracking-2px"
+                  className="flex text-white text-xs font-bold uppercase tracking-2px hover:opacity-30"
                   activeClassName="!text-orange"
                 >Features</AppLink>
               </li>
               <li className="flex justify-center text-center">
                 <AppLink
                   to="/pricing"
-                  className="flex text-white text-xs font-bold uppercase tracking-2px"
+                  className="flex text-white text-xs font-bold uppercase tracking-2px hover:opacity-30"
                   activeClassName="!text-orange"
                 >Pricing</AppLink>
               </li>
