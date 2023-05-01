@@ -12,7 +12,6 @@ const AppCardWithPhoto = ({
   alt,
   className,
 }: Props) => {
-  console.log(src, 123456, alt);
   const image = getImage(src) as IGatsbyImageData;
 
   return (

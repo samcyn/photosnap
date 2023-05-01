@@ -115,7 +115,7 @@ const IndexPage: React.FC<PageProps<Props>> = ({
             <AppCardWithPhotoAndText
               key={story.slug}
               storyTitle={story.title}
-              storyAuthor={story.author}
+              storyAuthor={`by ${story.author}`}
               src={story.desktop_image}
               callToActionText="Read Story"
               alt="story"
@@ -247,4 +247,4 @@ query MyQuery {
 `;
 export default IndexPage
 
-export const Head: HeadFC = () => <AppSeo title="Home Page" />
+export const Head: HeadFC = () => <AppSeo title="Home" />
