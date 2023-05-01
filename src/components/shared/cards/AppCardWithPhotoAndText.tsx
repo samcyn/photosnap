@@ -48,7 +48,7 @@ const AppCardWithPhotoAndText = ({
   const image = getImage(src) as IGatsbyImageData;
 
   const computedClass = mode === 'default' ? 'px-6 md:px-10 py-10 flex flex-col lg:transition-transform lg:ease-in lg:delay-100 justify-end lg:hover:-translate-y-6' : '';
-  const imageClass = mode === 'default' ? '!absolute inset-0 h-full w-full' : 'relative !md:absolute md:inset-0 md:h-full md:w-full';
+  const imageClass = mode === 'default' ? '!absolute inset-0 h-full w-full' : 'relative md:!absolute md:inset-0 md:h-full md:w-full';
 
   return (
     <figure className={`relative group overflow-hidden ${computedClass} ${className || ''}`}>
