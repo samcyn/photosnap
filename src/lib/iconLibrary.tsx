@@ -1,4 +1,5 @@
 import React from "react";
+
 export enum IconEnums {
   hamburger = 'Hamburger',
   logo = 'Logo',
@@ -14,7 +15,8 @@ export enum IconEnums {
   custom_domain = 'Custom Domain',
   drag_n_drop = 'Drag and Drop',
   embed = 'Embed',
-  no_limit = 'No Lmit'
+  no_limit = 'No Lmit',
+  check = 'Check'
 }
 
 export type IconTypes = keyof typeof IconEnums;
@@ -154,6 +156,10 @@ const NoLimit = () => (
   </>
 );
 
+const Check = () => (
+  <path fill="none" stroke="#000" strokeWidth="2" d="M1 8.124L5.623 13 17 1"/>
+);
+
 const IconsLibrary: Record<IconTypes, (() => JSX.Element)> = {
   hamburger: Hamburger,
   logo: Logo,
@@ -169,7 +175,8 @@ const IconsLibrary: Record<IconTypes, (() => JSX.Element)> = {
   custom_domain: CustomDomain,
   drag_n_drop: DragnDrop,
   embed: Embed,
-  no_limit: NoLimit
+  no_limit: NoLimit,
+  check: Check,
 };
 
 export default IconsLibrary;

@@ -1,0 +1,75 @@
+---
+title: "Pricing Page"
+created_at: 2023-04-29
+slug: "pricing_page"
+metadata_intro: {
+  slug: "pricing_intro",
+  title: "Pricing",
+  description: "Create a your stories, Photosnap is a platform for photographers and visual storytellers. It’s the simple way to create and share your photos.",
+  desktop_image: "./desktop/hero.jpg",
+  tablet_image: "./tablet/hero.jpg",
+  mobile_image: "./mobile/hero.jpg"
+}
+plans: [
+  {
+    slug: 'pasic_plan',
+    type: 'Basic',
+    description: 'Includes basic usage of our platform. Recommended for new and aspiring photographers.',
+    monthly_fee: 19,
+    yearly_fee: 182.4
+  },
+  {
+    slug: 'pro_plan',
+    type: 'Pro',
+    description: 'More advanced features available. Recommended for photography veterans and professionals.',
+    monthly_fee: 39,
+    yearly_fee: 374.4
+  },
+  {
+    slug: 'business_plan',
+    type: 'Business Plan',
+    description: 'Additional features available such as more detailed metrics. Recommended for business owners.',
+    monthly_fee: 99,
+    yearly_fee: 950.4
+  },
+]
+metrics: {
+  basic: {
+    unlimited_posts: true,
+    unlimited_uploads: true,
+    embeded_custom_content: false,
+    custom_metadata: false,
+    advanced_metrics: false,
+    photo_downloads: false,
+    search_indexing: false,
+    custom_analytics: false
+  },
+  pro: {
+    unlimited_posts: true,
+    unlimited_uploads: true,
+    embeded_custom_content: true,
+    custom_metadata: true,
+    advanced_metrics: false,
+    photo_downloads: false,
+    search_indexing: false,
+    custom_analytics: false
+  },
+  business: {
+    unlimited_posts: true,
+    unlimited_uploads: true,
+    embeded_custom_content: true,
+    custom_metadata: true,
+    advanced_metrics: true,
+    photo_downloads: true,
+    search_indexing: true,
+    custom_analytics: true
+  }
+}
+metadata_extras: {
+  slug: "we_are_in_beta",
+  title: "We’re in beta. Get your invite today!",
+  desktop_image: "../shared/desktop/bg-beta.jpg",
+  tablet_image: "../shared/tablet/bg-beta.jpg",
+  mobile_image: "../shared/mobile/bg-beta.jpg"
+}
+---
