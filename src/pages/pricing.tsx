@@ -83,17 +83,17 @@ const PricingPage: React.FC<PageProps<Props>> = ({
           descriptionClassName="text-15px leading-25px mix-blend-normal opacity-60"
         />
       </section>
-      <section className="px-3 py-16 md:px-6 md:py-28 lg:px-0 lg:pt-30 lg:pb-40">
+      <section className="px-3 py-16 md:px-6 md:py-28 lg:px-0 lg:py-40">
         <div className="container">
           <h3
-            className="hidden md:block text-center uppercase font-bold tracking-fourths text-40px leading-12 text-black mb-16"
+            className="hidden md:block text-center uppercase font-bold tracking-fourths text-40px leading-12 text-black mb-16 lg:mb-14"
           >
             Compare
           </h3>
-          <ul className="px-0 m-0 list-none max-w-[687px] mx-auto">
-            <li className="flex flex-col md:flex-row justify-between pb-6 gap-4 border-b-[1px] border-black mb-6">
-              <div className="font-bold text-xs tracking-2px text-black shrink grow basis-0">The Features</div>
-              <ul className="p-0 m-0 hidden list-none md:flex grow-[3] basis-0 gap-[70px] md:gap-0">
+          <ul className="px-0 m-0 list-none max-w-[732px] mx-auto">
+            <li className="flex flex-col md:flex-row justify-between pb-6 md:pl-6 gap-4 border-b-[1px] border-black mb-6">
+              <div className="font-bold text-xs tracking-2px shrink grow text-black max-w-[240px]">The Features</div>
+              <ul className="p-0 m-0 hidden list-none md:flex shrink grow gap-[70px] md:gap-0">
                 <li className="font-bold text-xs tracking-2px text-black text-center basis-0 md:basis-1/3">Basic</li>
                 <li className="font-bold text-xs tracking-2px text-black text-center basis-0 md:basis-1/3">Pro</li>
                 <li className="font-bold text-xs tracking-2px text-black text-center basis-0 md:basis-1/3">Business</li>
@@ -101,9 +101,9 @@ const PricingPage: React.FC<PageProps<Props>> = ({
             </li>
             {
               metrics.map(metric => (
-                <li key={metric.type} className="flex flex-col md:flex-row justify-between pb-6 gap-4  border-b-[1px] border-black [&:not(:last-of-type)]:mb-6">
-                  <div className="font-bold text-xs tracking-2px text-black shrink grow basis-0">{metric.type}</div>
-                  <ul className="p-0 m-0 list-none flex items-start grow-[3] basis-0 gap-[70px] md:gap-0">
+                <li key={metric.type} className="flex flex-col md:flex-row justify-between pb-6 md:pl-6 gap-4  border-b-[1px] border-black [&:not(:last-of-type)]:mb-6">
+                  <div className="font-bold text-xs tracking-2px shrink grow text-black  max-w-[240px]">{metric.type}</div>
+                  <ul className="p-0 m-0 list-none flex items-start gap-[70px] shrink grow md:gap-0">
                     <li className="font-bold text-[10px] leading-[13px] tracking-[1.6667px] text-black/30 flex flex-col md:flex-row gap-2 justify-center text-center basis-0 md:basis-1/3">
                       <span className="md:hidden">Basic</span>
                       { metric.basic && <AppIcon icon="check" width="18px" height="15" /> }
