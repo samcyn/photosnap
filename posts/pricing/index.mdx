@@ -34,38 +34,56 @@ plans: [
     yearly_fee: 950.4
   },
 ]
-metrics: {
-  basic: {
-    unlimited_posts: true,
-    unlimited_uploads: true,
-    embeded_custom_content: false,
-    custom_metadata: false,
-    advanced_metrics: false,
-    photo_downloads: false,
-    search_indexing: false,
-    custom_analytics: false
+metrics: [
+  {
+    type: 'UNLIMITED STORY POSTING',
+    basic: true,
+    pro: true,
+    business: true
   },
-  pro: {
-    unlimited_posts: true,
-    unlimited_uploads: true,
-    embeded_custom_content: true,
-    custom_metadata: true,
-    advanced_metrics: false,
-    photo_downloads: false,
-    search_indexing: false,
-    custom_analytics: false
+  {
+    type: 'UNLIMITED PHOTO UPLOAD',
+    basic: true,
+    pro: true,
+    business: true
   },
-  business: {
-    unlimited_posts: true,
-    unlimited_uploads: true,
-    embeded_custom_content: true,
-    custom_metadata: true,
-    advanced_metrics: true,
-    photo_downloads: true,
-    search_indexing: true,
-    custom_analytics: true
+  {
+    type: 'EMBEDDING CUSTOM CONTENT',
+    basic: false,
+    pro: true,
+    business: true
+  },
+  {
+    type: 'CUSTOMIZE METADATA',
+    basic: false,
+    pro: true,
+    business: true
+  },
+  {
+    type: 'ADVANCED METRICS',
+    basic: false,
+    pro: false,
+    business: true
+  },
+  {
+    type: 'PHOTO DOWNLOADS',
+    basic: false,
+    pro: false,
+    business: true
+  },
+  {
+    type: 'SEARCH ENGINE INDEXING',
+    basic: false,
+    pro: false,
+    business: true
+  },
+  {
+    type: 'CUSTOM ANALYTICS',
+    basic: false,
+    pro: false,
+    business: true
   }
-}
+]
 metadata_extras: {
   slug: "we_are_in_beta",
   title: "We’re in beta. Get your invite today!",

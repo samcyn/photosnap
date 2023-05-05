@@ -47,7 +47,7 @@ type Props = {
   }
 }
 
-const IndexPage: React.FC<PageProps<Props>> = ({
+const FeaturesPage: React.FC<PageProps<Props>> = ({
   data
 }) => {
   const {
@@ -55,7 +55,7 @@ const IndexPage: React.FC<PageProps<Props>> = ({
     metadata_extras,
     features
   } = data.mdx.frontmatter;
-  // 64.45
+
   return (
     <AppPageLayout>
       <section className="flex flex-wrap flex-col md:flex-row">
@@ -149,6 +149,6 @@ export const query = graphql`
     }
   }
 `;
-export default IndexPage
+export default FeaturesPage
 
 export const Head: HeadFC = () => <AppSeo title="Features" />

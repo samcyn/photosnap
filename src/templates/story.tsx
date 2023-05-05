@@ -51,6 +51,7 @@ const StoryPage: React.FC<PageProps<Props>> = ({
           publishedDate={frontmatter.publishedDate}
           alt={frontmatter.title}
           mode="hero"
+          imageClassName="h-375px"
         />
       </section>
     </AppPageLayout>
@@ -69,7 +70,7 @@ export const query = graphql`
             gatsbyImageData
           }
         }
-        publishedDate
+        publishedDate(formatString: "MMMM Do, YYYY")
         is_featured
         author
         description
