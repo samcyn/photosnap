@@ -1,61 +1,13 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import { graphql } from 'gatsby';
-import { IGatsbyImageData } from "gatsby-plugin-image";
-
 
 import AppPageLayout from "../components/layout/AppPageLayout";
 import AppSeo from "../components/AppSeo";
-import { AppCardWithPhoto, AppCardWithMain, AppCardWithIcon } from "../components/shared/cards";
-import { IconTypes } from "../lib/iconLibrary";
-import AppIcon from "../components/shared/AppIcon";
+import { AppCardWithPhoto, AppCardWithMain } from "../components/shared/cards";
+import { AppPricingList, PricingPageProps } from "../components/pricing";
 
-type ImageSharpProp = {
-  childImageSharp: {
-    gatsbyImageData: IGatsbyImageData
-  }
-}
-
-type MetaData = {
-  title: string
-  description: string
-  slug: string
-  desktop_image: ImageSharpProp
-}
-
-type Plan = {
-  slug: string
-  type: string
-  description: string
-  yearly_fee: number
-  monthly_fee: number
-}
-
-type Metric = {
-  type: string
-  basic: boolean
-  pro: boolean
-  business: boolean
-}
-
-type Props = {
-  mdx: {
-    frontmatter: {
-      slug: string
-      title: string
-      metadata_intro: MetaData
-      plans: Plan[]
-      metrics: Metric[]
-      metadata_extras: {
-        slug: string
-        title: string
-        desktop_image: ImageSharpProp
-      }
-    }
-  }
-}
-
-const PricingPage: React.FC<PageProps<Props>> = ({
+const PricingPage: React.FC<PageProps<PricingPageProps>> = ({
   data
 }) => {
   const {
@@ -90,37 +42,8 @@ const PricingPage: React.FC<PageProps<Props>> = ({
           >
             Compare
           </h3>
-          <ul className="px-0 m-0 list-none max-w-[732px] mx-auto">
-            <li className="flex flex-col md:flex-row justify-between pb-6 md:pl-6 gap-4 border-b-[1px] border-black mb-6">
-              <div className="font-bold text-xs tracking-2px shrink grow text-black max-w-[240px]">The Features</div>
-              <ul className="p-0 m-0 hidden list-none md:flex shrink grow gap-[70px] md:gap-0">
-                <li className="font-bold text-xs tracking-2px text-black text-center basis-0 md:basis-1/3">Basic</li>
-                <li className="font-bold text-xs tracking-2px text-black text-center basis-0 md:basis-1/3">Pro</li>
-                <li className="font-bold text-xs tracking-2px text-black text-center basis-0 md:basis-1/3">Business</li>
-              </ul>
-            </li>
-            {
-              metrics.map(metric => (
-                <li key={metric.type} className="flex flex-col md:flex-row justify-between pb-6 md:pl-6 gap-4  border-b-[1px] border-black [&:not(:last-of-type)]:mb-6">
-                  <div className="font-bold text-xs tracking-2px shrink grow text-black  max-w-[240px]">{metric.type}</div>
-                  <ul className="p-0 m-0 list-none flex items-start gap-[70px] shrink grow md:gap-0">
-                    <li className="font-bold text-[10px] leading-[13px] tracking-[1.6667px] text-black/30 flex flex-col md:flex-row gap-2 justify-center text-center basis-0 md:basis-1/3">
-                      <span className="md:hidden">Basic</span>
-                      { metric.basic && <AppIcon icon="check" width="18px" height="15" /> }
-                    </li>
-                    <li className="font-bold text-[10px] leading-[13px] tracking-[1.6667px] text-black/30 flex flex-col md:flex-row gap-2 justify-center text-center basis-0 md:basis-1/3">
-                      <span className="md:hidden">Pro</span>
-                      { metric.pro && <AppIcon icon="check" width="18px" height="15" /> }
-                    </li>
-                    <li className="font-bold text-[10px] leading-[13px] tracking-[1.6667px] text-black/30 flex flex-col md:flex-row gap-2 justify-center text-center basis-0 md:basis-1/3">
-                      <span className="md:hidden">Business</span>
-                      { metric.business && <AppIcon icon="check" width="18px" height="15" /> }
-                    </li>
-                  </ul>
-                </li>
-              ))
-            }
-          </ul>
+          {/* pricing List */}
+          <AppPricingList metrics={metrics} />
         </div>
       </section>
       <section>
