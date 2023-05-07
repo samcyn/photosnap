@@ -22,7 +22,7 @@ const AppButton = ({
 
   // compute classes base on variant type
   const classComputed = useMemo(() => {
-    let className = 'rounded-none transition inline-flex gap-4 items-center font-bold text-xs text-center tracking-2px px-6 py-3 ';
+    let className = 'rounded-none transition items-center font-bold text-xs text-center tracking-2px px-6 py-3 ';
     if (variant === 'contained') {
       if (buttonType === 'primary') {
         className += 'bg-black text-white hover:bg-grey hover:text-black';
@@ -62,9 +62,9 @@ const AppButton = ({
 
   return (
     <button className={classComputed} {...rest}>
-      { startIcon ? (<span>{startIcon}</span>) : null }
+      { startIcon ? (<span className="mr-4">{startIcon}</span>) : null }
       {children}
-      { endIcon ? (<span>{endIcon}</span>) : null }
+      { endIcon ? (<span className="ml-4">{endIcon}</span>) : null }
     </button>
   );
 };

@@ -12,7 +12,7 @@ const AppPricingList = ({
     <AppPricingListItem listHeader className="border-black" />
     {
       metrics.map(metric => (
-        <AppPricingListItem metric={metric} />
+        <AppPricingListItem key={metric.type} metric={metric} />
       ))
     }
   </ul>

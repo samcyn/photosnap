@@ -11,19 +11,20 @@ import {
 } from 'react';
 
 interface RadioButtonContextProps {
-  onChange?: (ev: React.ChangeEvent) => void;
-  value: string | number;
+  onChange?: (ev: ChangeEvent<HTMLInputElement>) => void;
+  value: RadioButtonProps['value'];
   disabled?: boolean;
   name: string;
 }
 
 // extend normal radio button
-interface RadioButtonProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,HTMLInputElement> {
+export interface RadioButtonProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,HTMLInputElement> {
   children?: ReactNode;
+  label?: string
 }
 
 // interface for radio group
-interface RadioButtonGroupProps {
+export interface RadioButtonGroupProps {
   name: string;
   disabled?: boolean;
   value: RadioButtonProps['value'];
@@ -43,7 +44,7 @@ export const useRadio = <T>(
 ): {
   children: RadioButtonProps['children']
   radioProps: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-  labelProps: DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
+  labelProps: DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> & { label: string | undefined};
   inputRef?: T;
 } => {
   const groupContext = useContext(RadioGroupContext);
@@ -58,15 +59,29 @@ export const useRadio = <T>(
     computedProps.name = groupContext.name;
     computedProps.onChange = onChange;
     computedProps.checked = props.value === groupContext.value;
+    computedProps['aria-checked'] = props.value === groupContext.value;
     computedProps.disabled = groupContext.disabled || props.disabled;
   }
 
   const {
     children,
-    ...radioProps
+    'aria-labelledby': ariaLabelledBy,
+    label,
+    id,
+    ...rest
   } = computedProps;
 
+  const radioProps = {
+    type: 'radio',
+    'aria-labelledby': ariaLabelledBy,
+    id,
+    ...rest
+  };
+
   const labelProps = {
+    id: ariaLabelledBy,
+    htmlFor: id,
+    label
   };
 
   return {

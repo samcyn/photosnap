@@ -6,6 +6,7 @@ import AppPageLayout from "../components/layout/AppPageLayout";
 import AppSeo from "../components/AppSeo";
 import { AppCardWithPhoto, AppCardWithMain } from "../components/shared/cards";
 import { AppPricingList, PricingPageProps } from "../components/pricing";
+import AppPricingCardGroup from "../components/pricing/AppPricingCardGroup";
 
 const PricingPage: React.FC<PageProps<PricingPageProps>> = ({
   data
@@ -37,6 +38,8 @@ const PricingPage: React.FC<PageProps<PricingPageProps>> = ({
       </section>
       <section className="px-3 py-16 md:px-6 md:py-28 lg:px-0 lg:py-40">
         <div className="container">
+          {/* pricing cards */}
+          <AppPricingCardGroup />
           <h3
             className="hidden md:block text-center uppercase font-bold tracking-fourths text-40px leading-12 text-black mb-16 lg:mb-14"
           >
