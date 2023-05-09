@@ -54,12 +54,10 @@ const AppPricingCardGroup = () => {
     setValue(newValue);
   }
   const onSwitch: React.ChangeEventHandler<HTMLInputElement> | undefined = (e) => {
-    console.log(e, 2233);
-    const value = e.target.value;
-    if(value === 'monthly') {
+    if(period === 'monthly') {
       return setPeriod('yearly');
     }
-    setPeriod(value);
+    setPeriod('monthly');
   }
 
   return (

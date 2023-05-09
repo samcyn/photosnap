@@ -22,7 +22,7 @@ const AppButton = ({
 
   // compute classes base on variant type
   const classComputed = useMemo(() => {
-    let className = 'rounded-none transition items-center font-bold text-xs text-center tracking-2px px-6 py-3 ';
+    let className = 'rounded-none transition inline-flex items-center font-bold text-xs text-center tracking-2px px-6 py-3 ';
     if (variant === 'contained') {
       if (buttonType === 'primary') {
         className += 'bg-black text-white hover:bg-grey hover:text-black';

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Metric } from "./types";
+import { Metric } from "./pricing-types";
 import AppPricingListItem from "./ApPricingListItem";
 
 type Props = { metrics: Metric[] };

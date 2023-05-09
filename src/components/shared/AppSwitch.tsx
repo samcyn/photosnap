@@ -1,40 +1,45 @@
 import React, { forwardRef, ForwardedRef, LegacyRef } from "react";
-import { useRadio, RadioButtonProps } from "../../hooks/useRadio";
 
-const AppSwith = forwardRef<React.LegacyRef<HTMLInputElement>, RadioButtonProps>((props, ref) => {
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string
+}
+
+
+const AppSwith = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
-    radioProps,
-    labelProps,
-    inputRef,
-  } = useRadio<ForwardedRef<LegacyRef<HTMLInputElement>> | undefined>(props, ref);
-console.log(radioProps, 444)
-  const { label, ...params } = labelProps;
+    id,
+    label,
+    checked,
+    ...rest
+  } = props;
   return (
     <div className="inline-flex items-center relative whitespace-nowrap">
       <span className="relative inline-flex items-center">
-        <input {...radioProps} className="sr-only" ref={inputRef as LegacyRef<HTMLInputElement> | undefined} />
+        <input type="checkbox" id={id} className="sr-only" ref={ref} aria-checked={checked} checked={checked} {...rest} />
 
         <label
-          {...params}
           className={`
             w-16 h-8 block relative 
             cursor-pointer select-none 
             outline-none rounded-[40px] p-1 
             transition
+            duration-500
             after:rounded-full after:bg-white
             after:transition
             after:relative after:block
             after:content-[''] after:w-6
             after:h-6
-            ${radioProps.checked ? 'after:left-8  bg-black' : 'after:left-0  bg-grey'}
+            after:duration-500
+            ${checked ? 'after:translate-x-8  bg-black' : 'after:translate-x-0  bg-grey'}
           `}
+          htmlFor={id}
         >
         </label>
       </span>
       {
         label ? (
           <label className="cursor-pointer ml-2">
-            <span>{labelProps.label}</span>
+            <span>{label}</span>
           </label>
         ) : null
       }

@@ -1,7 +1,9 @@
 import AppPricingList from './AppPricingList';
-export { Metric, PricingPageProps } from './types';
+import type { Metric, PricingPageProps } from './pricing-types';
 
 export {
   AppPricingList,
   // types
+  Metric,
+  PricingPageProps,
 }

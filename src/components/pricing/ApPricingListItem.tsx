@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AppIcon from '../shared/AppIcon';
-import { Metric } from './types';
+import { Metric } from './pricing-types';
 
 type Props = {
   metric?: Metric
