@@ -16,7 +16,8 @@ module.exports = {
     extend: {
       colors: {
         grey: '#dfdfdf',
-        orange: '#d87d4a'
+        orange: '#d87d4a',
+        'grey-light': '#f5f5f5'
       },
       letterSpacing: {
         '2px': '2px',

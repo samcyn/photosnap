@@ -40,7 +40,7 @@ const RadioGroupContext = createContext<RadioButtonContextProps|null>(null);
 
 export const useRadio = <T>(
   props: RadioButtonProps,
-  ref?: T
+  ref?: T 
 ): {
   children: RadioButtonProps['children']
   radioProps: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;

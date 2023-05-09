@@ -4,7 +4,7 @@ import { useRadio, RadioButtonProps } from "../../hooks/useRadio"
 
 type Props = RadioButtonProps & {
   description: string;
-  amount: number;
+  amount: number | string;
 }
 
 const indicatorStyles = {
@@ -36,11 +36,19 @@ const AppPricingCard = forwardRef<HTMLInputElement, Props>((props, ref) => {
   return (
     <div className={`
        px-5 md:px-10 relative flex items-center justify-center transition 
-      ${radioParams.checked ? "py-12 md:py-10 lg:pt-[88px] lg:pb-18 bg-black text-white" : "pt-14 pb-10 md:py-10 lg:pt-14 bg-grey text-black"}`}
+      ${radioParams.checked ?
+        "py-12 md:py-10 lg:pt-[88px] lg:pb-18 bg-black text-white"
+        : "pt-14 pb-10 md:py-10 lg:pt-14 bg-grey-light text-black"}`}
     >
       {/* show indicator when active */}
       {
-        radioParams.checked && (<div className="absolute w-full md:w-6px lg:w-full h-6px md:h-full lg:h-6px top-0 left-0 right-0 md:right-auto lg:right-0 md:bottom-0 lg:bottom-auto" style={indicatorStyles} />)
+        radioParams.checked && (
+          <div 
+            className="absolute w-full md:w-6px lg:w-full h-6px md:h-full 
+              lg:h-6px top-0 left-0 right-0 md:right-auto lg:right-0 md:bottom-0 lg:bottom-auto" 
+            style={indicatorStyles} 
+          />
+          )
       }
       <div className="w-full">
         <div className="flex flex-col flex-wrap md:flex-row md:items-start">
