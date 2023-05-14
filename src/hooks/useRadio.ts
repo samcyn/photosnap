@@ -28,7 +28,7 @@ export interface RadioButtonGroupProps {
   name: string;
   disabled?: boolean;
   value: RadioButtonProps['value'];
-  children: RadioButtonProps['children']
+  children?: RadioButtonProps['children']
   onChange?: (ev: ChangeEvent<HTMLInputElement>) => void;
   id?: string;
   label?: string

@@ -39,12 +39,7 @@ const PricingPage: React.FC<PageProps<PricingPageProps>> = ({
       <section className="px-3 py-16 md:px-6 md:py-28 lg:px-0 lg:py-40">
         <div className="container">
           {/* pricing cards */}
-          <AppPricingCardGroup />
-          <h3
-            className="hidden md:block text-center uppercase font-bold tracking-fourths text-40px leading-12 text-black mb-16 lg:mb-14"
-          >
-            Compare
-          </h3>
+          <AppPricingCardGroup plans={plans} />
           {/* pricing List */}
           <AppPricingList metrics={metrics} />
         </div>
@@ -87,6 +82,7 @@ export const query = graphql`
         plans {
           slug
           type
+          value
           description
           yearly_fee
           monthly_fee

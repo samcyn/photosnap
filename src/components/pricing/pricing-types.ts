@@ -20,12 +20,13 @@ type MetaData = {
   desktop_image: ImageSharpProp
 }
 
-type Plan = {
+export type Plan = {
   slug: string
   type: string
+  value: string
   description: string
-  yearly_fee: number
-  monthly_fee: number
+  yearly_fee: number|string
+  monthly_fee: number|string
 }
 
 export type PricingPageProps = {

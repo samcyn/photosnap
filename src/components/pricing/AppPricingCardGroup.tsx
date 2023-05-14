@@ -3,72 +3,96 @@ import React, { useState } from 'react';
 import AppPricingCard from "./AppPricingCard";
 import { useRadioGroup, RadioButtonGroupProps } from '../../hooks/useRadio';
 import AppSwith from '../shared/AppSwitch';
+import { Plan } from './pricing-types';
 
+type Props = { plans: Plan[] };
 
-const RadioButtonsGroup = (props: RadioButtonGroupProps) => {
+interface RadioButtonsGroupProps extends RadioButtonGroupProps {
+  plans: Plan[]
+  isMonthly: boolean
+}
+
+const RadioButtonsGroup = (props: RadioButtonsGroupProps) => {
+  const {
+    plans,
+    isMonthly,
+    ...rest
+  } = props;
+
   const {
     Provider,
     providerValue,
-  } = useRadioGroup(props);
+  } = useRadioGroup({
+    ...rest,
+  });
 
   return (
     <Provider value={providerValue}>
       <div className="flex flex-wrap -my-3 lg:my-0 lg:-mx-15px lg:items-center">
-        <div className="py-3 basis-full lg:py-0 lg:px-15px lg:basis-1/3">
-          <AppPricingCard
-            name="pricing"
-            label="Basic"
-            value="basic"
-            description="Includes basic usage of our platform. Recommended for new and aspiring photographers."
-            amount="19.00"
-          />
-        </div>
-        <div className="py-3 basis-full lg:py-0 lg:px-15px lg:basis-1/3">
-          <AppPricingCard
-            name="pricing"
-            label="Pro"
-            value="pro"
-            description="More advanced features available. Recommended for photography veterans and professionals."
-            amount="39.00"
-          />
-        </div>
-        <div className="py-3 basis-full lg:py-0 lg:px-15px lg:basis-1/3">
-          <AppPricingCard
-            name="pricing"
-            label="Business"
-            value="business"
-            description="Additional features available such as more detailed metrics. Recommended for business owners."
-            amount="99.00"
-          />
-        </div>
+        {
+          plans.map(plan => (
+            <div key={plan.slug} className="py-3 basis-full lg:py-0 lg:px-15px lg:basis-1/3">
+              <AppPricingCard
+                name="pricing"
+                label={plan.type}
+                value={plan.value}
+                description={plan.description}
+                amount={isMonthly ? plan.monthly_fee : plan.yearly_fee}
+                period={isMonthly ? 'per month' : 'per year'}
+              />
+            </div>
+          ))
+        }
       </div>
     </Provider>
   );
 }
-const AppPricingCardGroup = () => {
-  const [value, setValue] = useState('pro');
-  const [period, setPeriod] = useState('monthly');
+
+const AppPricingCardGroup = (props: Props) => {
+  // form
+  const [form, setForm] = useState({
+    pricing: 'pro',
+    period: 'monthly'
+  });
 
   const onChange: RadioButtonGroupProps['onChange'] = (ev) => {
-    const newValue = ev.target.value;
-    setValue(newValue);
-  }
-  const onSwitch: React.ChangeEventHandler<HTMLInputElement> | undefined = (e) => {
-    if(period === 'monthly') {
-      return setPeriod('yearly');
+    if (ev.target.name === 'period') {
+      if (form.period === 'monthly') {
+        return setForm(prev => ({
+          ...prev,
+          period: 'yearly',
+        }));
+      }
+      return setForm(prev => ({
+        ...prev,
+        period: 'monthly',
+      }));
     }
-    setPeriod('monthly');
+    setForm(prev => ({
+      ...prev,
+      [ev.target.name]: ev.target.value,
+    }));
   }
+  const isMonthly = form.period === 'monthly';
 
   return (
-    <div className="pt-10 pb-16 md:pb-28 lg:pt-12 lg:pb-40">
-      <div>
-        <AppSwith id='period' value="monthly" name="period" checked={period === 'monthly'} onChange={onSwitch} />
+    <div className="pb-16 md:pb-28 lg:pb-40">
+      <div className="flex items-center justify-center gap-8 mb-10 lg:mb-12">
+        <p className={`font-bold text-18px leading-25px ${isMonthly ? 'text-black' : 'text-black/25'}`}>Monthly</p>
+        <AppSwith
+          id='period'
+          value="monthly"
+          name="period"
+          checked={!isMonthly}
+          onChange={onChange}
+        />
+        <p className={`font-bold text-18px leading-25px ${!isMonthly ? 'text-black' : 'text-black/25'}`}>Yearly</p>
       </div>
       <RadioButtonsGroup
         name="pricing"
-        value={value}
-        children={null}
+        value={form.pricing}
+        plans={props.plans}
+        isMonthly={isMonthly}
         onChange={onChange}
       />
     </div>

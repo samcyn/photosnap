@@ -5,6 +5,7 @@ import { useRadio, RadioButtonProps } from "../../hooks/useRadio"
 type Props = RadioButtonProps & {
   description: string;
   amount: number | string;
+  period: string
 }
 
 const indicatorStyles = {
@@ -15,6 +16,7 @@ const AppPricingCard = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
     description,
     amount,
+    period,
     ...rest
   } = props;
 
@@ -60,18 +62,21 @@ const AppPricingCard = forwardRef<HTMLInputElement, Props>((props, ref) => {
           </div>
           <div className="basis-full md:basis-1/2 lg:basis-full text-center md:text-right lg:text-center mb-10 md:mb-8 lg:mb-10">
             <p className="font-bold text-40px leading-12 tracking-fourths uppercase text-inherit mb-0">${amount}</p>
-            <small className="font-normal text-15px leading-25px text-inherit mix-blend-normal opacity-60">per month</small>
+            <small className="font-normal text-15px leading-25px text-inherit mix-blend-normal opacity-60">
+              {period}
+            </small>
           </div>
           <div className="basis-full md:basis-1/2 lg:basis-full text-center px-4 md:px-0">
             <label
               className={`
+              cursor-pointer
               block rounded-none transition items-center 
               font-bold text-xs tracking-2px px-6 py-3
               w-full text-center uppercase ${radioParams.checked ? 'bg-white text-black' : 'bg-black text-white'}
               `}
               {...params}
             >
-              Pick Plan
+              {radioParams.checked ? 'Proceed to Checkout' : 'Pick Plan' }
               <input
                 className="sr-only"
                 value={value}

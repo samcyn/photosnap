@@ -24,13 +24,13 @@ const AppSwith = forwardRef<HTMLInputElement, Props>((props, ref) => {
             outline-none rounded-[40px] p-1 
             transition
             duration-500
-            after:rounded-full after:bg-white
+            after:rounded-full 
             after:transition
             after:relative after:block
             after:content-[''] after:w-6
             after:h-6
             after:duration-500
-            ${checked ? 'after:translate-x-8  bg-black' : 'after:translate-x-0  bg-grey'}
+            ${checked ? 'after:bg-white after:translate-x-8  bg-black' : 'after:bg-black after:translate-x-0  bg-grey'}
           `}
           htmlFor={id}
         >
