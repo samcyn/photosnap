@@ -7,6 +7,7 @@ import AppSeo from "../components/AppSeo";
 import { AppCardWithPhoto, AppCardWithMain } from "../components/shared/cards";
 import { AppPricingList, PricingPageProps } from "../components/pricing";
 import AppPricingCardGroup from "../components/pricing/AppPricingCardGroup";
+import { useGetInvite } from "../hooks/useGetInvite";
 
 const PricingPage: React.FC<PageProps<PricingPageProps>> = ({
   data
@@ -17,6 +18,7 @@ const PricingPage: React.FC<PageProps<PricingPageProps>> = ({
     plans,
     metrics
   } = data.mdx.frontmatter;
+  const [_, onSetVisible] = useGetInvite();
 
   return (
     <AppPageLayout>
@@ -56,6 +58,7 @@ const PricingPage: React.FC<PageProps<PricingPageProps>> = ({
           containerClassName="md:flex-row md:gap-30 justify-between"
           actionButtonClassName="uppercase text-inherit pl-0 pb-0 md:p-0"
           callToActionText="Get An Invite"
+          onCallToAction={() => onSetVisible(true)}
         />
       </section>
     </AppPageLayout>

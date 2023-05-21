@@ -4,9 +4,11 @@ import AppBrandLogo from "../shared/AppBrandLogo";
 import AppIconButton from "../shared/AppIconButton";
 import AppLink from "../shared/AppLink";
 import AppButton from "../shared/AppButton";
+import { useGetInvite } from "../../hooks/useGetInvite";
 
 const AppNavigationBar = () => {
   const [expandClass, setExpandClass] = useState(false);
+  const [_, onSetVisible] = useGetInvite();
 
   const onExpand = () => {
     setExpandClass(prev => !prev);
@@ -64,7 +66,12 @@ const AppNavigationBar = () => {
             </ul>
             {/* action button */}
             <div className="md:flex">
-              <AppButton className="uppercase w-full justify-center">Get An Invite</AppButton>
+              <AppButton 
+                className="uppercase w-full justify-center"
+                onClick={() => onSetVisible(true)}
+              >
+                Get An Invite
+              </AppButton>
             </div>
           </div>
         </nav>

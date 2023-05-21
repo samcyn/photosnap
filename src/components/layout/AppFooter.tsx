@@ -4,8 +4,11 @@ import AppBrandLogo from "../shared/AppBrandLogo";
 import AppLink from "../shared/AppLink";
 import AppIcon from "../shared/AppIcon";
 import AppButton from "../shared/AppButton";
+import { useGetInvite } from "../../hooks/useGetInvite";
 
 const AppFooter = () => {
+  const [_, onSetVisible] = useGetInvite();
+
   return (
     <footer className="bg-black">
       <div className="container">
@@ -95,11 +98,12 @@ const AppFooter = () => {
                 endIcon={
                   <AppIcon width="43" height="14" icon="arrow-forward-right" />
                 }
+                onClick={() => onSetVisible(true)}
               >
                 Get An Invite
               </AppButton>
             </div>
-            <p className="text-white/50 text-center font-normal text-15px leading-5 mix-blend-normal">Copyright 2019. All Rights Reserved</p>
+            <p className="text-white/50 text-center font-normal text-15px leading-5 mix-blend-normal">Copyright 2023. All Rights Reserved</p>
           </div>
         </div>
       </div>

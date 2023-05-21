@@ -16,6 +16,7 @@ import {
   AppCardWithIcon,
 } from "../components/shared/cards";
 import { IconTypes } from "../lib/iconLibrary";
+import { useGetInvite } from "../hooks/useGetInvite";
 
 type ImageSharpProp = {
   childImageSharp: {
@@ -72,6 +73,8 @@ const IndexPage: React.FC<
     features,
   } = data.mdx.frontmatter;
 
+  const [_, onSetVisible] = useGetInvite();
+
   // note function must return React.MouseEventHandler<Element> | undefined
   const onCallToAction = (slug: string): React.MouseEventHandler<Element> | undefined => (e) => {
     navigate(`/stories/${slug}/`)
@@ -96,6 +99,7 @@ const IndexPage: React.FC<
           callToActionText="Get An Invite"
           showIndicator
           className="w-full md:w-2/3 md:basis-2/3 xl:w-5/12 xl:basis-5/12 justify-center items-center bg-black text-white py-0 md:py-43 xl:py-43 md:order-1"
+          onCallToAction={() => onSetVisible(true)}
         />
       </section>
       <section className="flex flex-wrap flex-col md:flex-row">
@@ -114,6 +118,7 @@ const IndexPage: React.FC<
           description="We provide design templates to ensure your stories look terrific. Easily add photos, text, embed maps and media from other networks. Then share your story with everyone."
           className="w-full md:w-2/3 md:basis-2/3 xl:w-5/12 xl:basis-5/12 justify-center items-center bg-white text-black py-0 md:py-34 xl:py-43"
           callToActionText="View the stories"
+          onCallToAction={() => navigate('/stories/')}
         />
       </section>
 
@@ -132,6 +137,7 @@ const IndexPage: React.FC<
           description="Photosnap can help you create stories that resonate with your audience.  Our tool is designed for photographers of all levels, brands, businesses you name it."
           className="w-full md:w-2/3 md:basis-2/3 xl:w-5/12 xl:basis-5/12 justify-center items-center bg-white text-black py-0 md:py-40 xl:py-43 md:order-1"
           callToActionText="View the stories"
+          onCallToAction={() => navigate('/stories/')}
         />
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">

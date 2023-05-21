@@ -56,6 +56,7 @@ const AppPricingCardGroup = (props: Props) => {
   });
 
   const onChange: RadioButtonGroupProps['onChange'] = (ev) => {
+    // handle switch logic
     if (ev.target.name === 'period') {
       if (form.period === 'monthly') {
         return setForm(prev => ({
@@ -68,6 +69,7 @@ const AppPricingCardGroup = (props: Props) => {
         period: 'monthly',
       }));
     }
+    // handle radio buttons
     setForm(prev => ({
       ...prev,
       [ev.target.name]: ev.target.value,

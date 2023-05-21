@@ -12,7 +12,7 @@ type Props = {
   viewBox?: string
   height?: string
   width?: string
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
 const AppIconButton = ({
