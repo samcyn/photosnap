@@ -29,7 +29,7 @@ interface Props {
   imageClassName?: string,
   actionButtonClassName?: string
   containerClassName?: string
-  onCallToAction?: React.MouseEventHandler<Element>
+  onCallToAction?: React.MouseEventHandler<Element> | undefined
 }
 
 const AppCardWithMain = ({
